@@ -2,9 +2,11 @@
   "name": "gm-util",
   "version": "2.0.2",
   "description": "",
-  "main": "lib/index.js",
+  "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "precommit": "eslint ./src/",
+    "publishpatch": "npm version patch; git push origin HEAD:master; npm publish --registry='https://registry.npmjs.org'; cnpm sync react-mgm; npm version;"
   },
   "repository": {
     "type": "git",
@@ -17,6 +19,7 @@
   },
   "homepage": "https://github.com/gmfe/gm-util#readme",
   "devDependencies": {
+    "husky": "^0.11.4",
     "underscore": "^1.8.3"
   }
 }

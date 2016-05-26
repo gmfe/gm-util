@@ -3,6 +3,18 @@ import format from './format.js';
 import _ from 'underscore';
 import RequestInterceptor from './RequestInterceptor';
 
+var setPromiseTimeout = function (promise, ms) {
+    if (ms === false) {
+        return promise;
+    }
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            reject('request timeout');
+        }, ms);
+        promise.then(resolve, reject);
+    });
+};
+
 var processRequest = function (config) {
     return RequestInterceptor.interceptor.request(config);
 };
@@ -10,7 +22,7 @@ var processRequest = function (config) {
 var processResponse = function (promise, url, sucCode, config) {
     var color = 'color: #8a6d3b;';
 
-    return promise.then(function (res) {
+    return setPromiseTimeout(promise, config.options.timeout).then(function (res) {
         if (res.ok) {
             var ct = res.headers.get('content-type');
             // 后台可能会有登录拦截，返回登录页面
@@ -58,6 +70,7 @@ var Request = function (url, options) {
     this.url = url;
     this.sucCode = [0];
     this.options = Object.assign({
+        timeout: 10000, // number or false
         method: 'get',
         headers: {
             'Accept': 'application/json'
@@ -72,6 +85,12 @@ Request.prototype = {
         } else {
             this.sucCode.push(codes);
         }
+        return this;
+    },
+    timeout: function (timeout) {
+        Object.assign(this.options, {
+            timeout
+        });
         return this;
     },
     data: function (_data) {

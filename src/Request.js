@@ -9,7 +9,7 @@ var setPromiseTimeout = function (promise, ms) {
     }
     return new Promise((resolve, reject) => {
         setTimeout(() => {
-            reject('request timeout');
+            reject('连接超时，请稍后重试');
         }, ms);
         promise.then(resolve, reject);
     });

@@ -5,6 +5,8 @@ import format from './format';
 import isElementInViewport from './isElementInViewport';
 import isElementOverViewport from './isElementOverViewport';
 import is from './is';
+import contains from './contains';
+import createChainedFunction from './createChainedFunction';
 
 module.exports = {
     Request,
@@ -13,6 +15,7 @@ module.exports = {
     param,
     isElementInViewport,
     isElementOverViewport,
-    is
+    is,
+    contains,
+    createChainedFunction
 };
-

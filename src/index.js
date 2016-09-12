@@ -7,6 +7,7 @@ import isElementOverViewport from './isElementOverViewport';
 import is from './is';
 import contains from './contains';
 import createChainedFunction from './createChainedFunction';
+import getElementPosition from './getElementPosition';
 
 module.exports = {
     Request,
@@ -17,5 +18,6 @@ module.exports = {
     isElementOverViewport,
     is,
     contains,
-    createChainedFunction
+    createChainedFunction,
+    getElementPosition
 };

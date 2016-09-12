@@ -2,11 +2,10 @@
   "name": "gm-util",
   "version": "2.1.1",
   "description": "",
-  "main": "lib/index.js",
+  "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "precommit": "eslint ./src/",
-    "deploy": "babel src -d lib",
     "publishpatch": "git add --all; git commit -m 'c'; npm version patch; git push origin HEAD:master; npm publish --registry='https://registry.npmjs.org'; cnpm sync gm-util; npm version;"
   },
   "repository": {

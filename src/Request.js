@@ -1,6 +1,6 @@
 import param from './param.js';
 import format from './format.js';
-import _ from 'underscore';
+import _ from 'lodash';
 import RequestInterceptor from './RequestInterceptor';
 
 var setPromiseTimeout = function (promise, ms) {

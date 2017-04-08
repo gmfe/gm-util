@@ -21,7 +21,7 @@ var processRequest = function (config) {
 
 var processResponse = function (promise, url, sucCode, config) {
     var color = 'color: #8a6d3b;';
-
+    
     return setPromiseTimeout(promise, config.options.timeout).then(function (res) {
         if (res.ok) {
             var ct = res.headers.get('content-type');
@@ -31,7 +31,7 @@ var processResponse = function (promise, url, sucCode, config) {
                     if (html.indexOf('title>登陆</title') > -1) {
                         return Promise.reject('请登录!');
                     }
-                    return Promise.reject('未知错误！！！！！');
+                    return Promise.reject('未知错误，请刷新页面重试！！！！！');
                 });
             } else {
                 return res.json();
@@ -129,10 +129,10 @@ Request.prototype = {
     },
     get: function () {
         var t = this;
-
+        
         return t._beforeRequest().then(function () {
             var p = param(t._data);
-            var newUrl = t.url + (p ? ((t.url.indexOf('?') > -1 ? '&' : '?') + p) : '') ;
+            var newUrl = t.url + (p ? ((t.url.indexOf('?') > -1 ? '&' : '?') + p) : '');
             return processResponse(fetch(newUrl, t.options), t.url, t.sucCode, t._getConfig());
         });
     },
@@ -141,7 +141,7 @@ Request.prototype = {
         var data = t._data;
         var body;
         t.options.method = 'post';
-
+        
         return t._beforeRequest().then(function () {
             // 兼容传[json string] [formData] 的情况,暂时这两种. 其他的看情况
             if (toString.call(data) === '[object Object]') {

@@ -8,8 +8,11 @@ import is from './is';
 import contains from './contains';
 import createChainedFunction from './createChainedFunction';
 import getElementPosition from './getElementPosition';
+import processReactRouterProps from './processReactRouterProps';
+import processHistory from './processHistory';
+import Bundle from './bundle';
 
-module.exports = {
+export {
     Request,
     RequestInterceptor,
     format,
@@ -19,5 +22,8 @@ module.exports = {
     is,
     contains,
     createChainedFunction,
-    getElementPosition
+    getElementPosition,
+    Bundle,
+    processReactRouterProps,
+    processHistory
 };

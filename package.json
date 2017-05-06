@@ -1,8 +1,8 @@
 {
   "name": "gm-util",
-  "version": "4.1.0",
+  "version": "4.2.0",
   "description": "",
-  "main": "src/index.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "precommit": "eslint ./src/",
@@ -22,9 +22,13 @@
     "babel-cli": "^6.14.0",
     "babel-preset-es2015": "^6.14.0",
     "husky": "^0.11.4",
-    "lodash": "^4.17.4"
+    "lodash": "^4.17.4",
+    "query-string": "^4.3.4",
+    "react": "^15.5.4"
   },
   "peerDependencies": {
-    "lodash": "^4.17.4"
+    "lodash": "^4.17.4",
+    "query-string": "^4.3.4",
+    "react": "^15.5.4"
   }
 }

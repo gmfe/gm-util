@@ -11,6 +11,7 @@ import getElementPosition from './getElementPosition';
 import processReactRouterProps from './processReactRouterProps';
 import processHistory from './processHistory';
 import Bundle from './bundle';
+import keyMirror from './keyMirror';
 
 export {
     Request,
@@ -25,5 +26,6 @@ export {
     getElementPosition,
     Bundle,
     processReactRouterProps,
-    processHistory
+    processHistory,
+    keyMirror
 };

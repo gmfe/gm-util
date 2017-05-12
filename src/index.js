@@ -15,7 +15,7 @@ import keyMirror from './keyMirror';
 import injectStore from './injectStore';
 import groupByWithIndex from './groupByWithIndex';
 
-export default {
+export {
     Request,
     RequestInterceptor,
     format,

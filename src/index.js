@@ -13,6 +13,7 @@ import processHistory from './processHistory';
 import Bundle from './bundle';
 import keyMirror from './keyMirror';
 import injectStore from './injectStore';
+import groupByWithIndex from './groupByWithIndex';
 
 export {
     Request,
@@ -29,5 +30,6 @@ export {
     processReactRouterProps,
     processHistory,
     keyMirror,
-    injectStore
+    injectStore,
+    groupByWithIndex
 };

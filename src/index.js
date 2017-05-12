@@ -12,6 +12,7 @@ import processReactRouterProps from './processReactRouterProps';
 import processHistory from './processHistory';
 import Bundle from './bundle';
 import keyMirror from './keyMirror';
+import injectStore from './injectStore';
 
 export {
     Request,
@@ -27,5 +28,6 @@ export {
     Bundle,
     processReactRouterProps,
     processHistory,
-    keyMirror
+    keyMirror,
+    injectStore
 };

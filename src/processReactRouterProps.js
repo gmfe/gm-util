@@ -1,6 +1,8 @@
 import queryString from 'query-string';
 
 export default function processReactRouterProps(props) {
-    props.location.query = queryString.parse(props.location.search);
-    return props;
+    const newProps = Object.assign({}, props);
+    newProps.location.query = queryString.parse(props.location.search);
+    newProps.params = props.match.params || {}; // 不止 || 是否有意义
+    return newProps;
 }

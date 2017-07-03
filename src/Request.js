@@ -21,7 +21,7 @@ var processRequest = function (config) {
 
 var processResponse = function (promise, url, sucCode, config) {
     var color = 'color: #8a6d3b;';
-    
+
     return setPromiseTimeout(promise, config.options.timeout).then(function (res) {
         if (res.ok) {
             var ct = res.headers.get('content-type');
@@ -129,7 +129,7 @@ Request.prototype = {
     },
     get: function () {
         var t = this;
-        
+
         return t._beforeRequest().then(function () {
             var p = param(t._data);
             var newUrl = t.url + (p ? ((t.url.indexOf('?') > -1 ? '&' : '?') + p) : '');
@@ -141,13 +141,22 @@ Request.prototype = {
         var data = t._data;
         var body;
         t.options.method = 'post';
-        
+
         return t._beforeRequest().then(function () {
             // 兼容传[json string] [formData] 的情况,暂时这两种. 其他的看情况
             if (toString.call(data) === '[object Object]') {
-                body = new FormData();
-                for (var e in data) {
-                    body.append(e, data[e]);
+                // 如果存在File，就用表单上传
+                if (_.find(data, v => toString.call(v) === '[object File]')) {
+                    body = new FormData();
+                    for (var e in data) {
+                        body.append(e, data[e]);
+                    }
+                } else {
+                    // 否则 x-www-form-urlencoded。  和jquery的post一样
+                    t.options.headers = Object.assign({}, t.options.headers, {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    });
+                    body = param(data);
                 }
             } else {
                 body = data;

@@ -14,6 +14,7 @@ import Bundle from './bundle';
 import keyMirror from './keyMirror';
 import injectStore from './injectStore';
 import groupByWithIndex from './groupByWithIndex';
+import timeSync from './timeSync';
 
 export {
     Request,
@@ -31,5 +32,6 @@ export {
     processHistory,
     keyMirror,
     injectStore,
-    groupByWithIndex
+    groupByWithIndex,
+    timeSync
 };

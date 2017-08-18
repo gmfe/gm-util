@@ -20,10 +20,8 @@ const timeSync = {
     },
     start(key) {
         if (map[key]) {
-            debugger;
             if (!map[key].id) {
                 map[key].id = setInterval(() => {
-                    debugger;
                     _.each(map[key].cbs, cb => cb());
                 }, map[key].time);
             }

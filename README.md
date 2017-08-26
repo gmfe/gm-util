@@ -1,6 +1,7 @@
 # gm-util
 
 ### Request
+
         见 [Request](./doc/Request.md) [RequestInterceptor](./doc/RequestInterceptor.md)
 
         ### timeSync
@@ -15,11 +16,9 @@
 
         `element`整个界面是否在视窗内
 
-
         ### isElementInViewport
 
         `element`是否存在界面在视窗内
-
 
         ### is
 
@@ -54,7 +53,6 @@
 
         配合 `mobx` 把 store 注入 组件
 
-
         ```javascript
         @injectStore({aStore})
         class A extends React.Component {
@@ -68,5 +66,3 @@
         ### groupByWithIndex
 
         迁移 `lodash` 的时候 xxxBy 方法并没有提供所有， 估这里封装下
-
-

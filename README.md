@@ -2,67 +2,67 @@
 
 ### Request
 
-        见 [Request](./doc/Request.md) [RequestInterceptor](./doc/RequestInterceptor.md)
+见 [Request](./doc/Request.md) [RequestInterceptor](./doc/RequestInterceptor.md)
 
-        ### timeSync
+### timeSync
 
-        见 [timeSync](./doc/timeSync.md)
+见 [timeSync](./doc/timeSync.md)
 
 ### param
 
-        废弃，使用[query-string](https://github.com/sindresorhus/query-string)
+废弃，使用[query-string](https://github.com/sindresorhus/query-string)
 
 ### isElementInViewport
 
-        `element`整个界面是否在视窗内
+`element`整个界面是否在视窗内
 
-        ### isElementInViewport
+### isElementInViewport
 
-        `element`是否存在界面在视窗内
+`element`是否存在界面在视窗内
 
-        ### is
+### is
 
-        - weixin
-        - mac
+- weixin
+- mac
 
-        ### contains
+### contains
 
-        `contains(domA, domB)` domA 是否包含 domB
+`contains(domA, domB)` domA 是否包含 domB
 
-        ### getElementPosition
+### getElementPosition
 
-        获取元素的位置
+获取元素的位置
 
-        ### Bundle
+### Bundle
 
-        配合`react-router`做异步加载的一个组件
+配合`react-router`做异步加载的一个组件
 
-        ### processReactRouterProps
+### processReactRouterProps
 
-        `react-router`从2切4过程中，props会有变动，此方法做个兼容过度，具体见代码
+`react-router`从2切4过程中，props会有变动，此方法做个兼容过度，具体见代码
 
-        ### processHistory
+### processHistory
 
-        同上
+同上
 
-        ### keyMirror
+### keyMirror
 
-        `keyMirror({A: null}) // 返回 {A: 'A'}`
+`keyMirror({A: null}) // 返回 {A: 'A'}`
 
-        ### injectStore
+### injectStore
 
-        配合 `mobx` 把 store 注入 组件
+配合 `mobx` 把 store 注入 组件
 
-        ```javascript
-        @injectStore({aStore})
-        class A extends React.Component {
-        render(){
+```javascript
+@injectStore({aStore})
+class A extends React.Component {
+    render(){
         console.log(this.props.aStore);
         // ...
-        }
-        }
-        ```
+    }
+}
+```
 
-        ### groupByWithIndex
+### groupByWithIndex
 
-        迁移 `lodash` 的时候 xxxBy 方法并没有提供所有， 估这里封装下
+迁移 `lodash` 的时候 xxxBy 方法并没有提供所有， 估这里封装下

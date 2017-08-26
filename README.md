@@ -1,47 +1,72 @@
 # gm-util
 
-## 介绍
-
 ### Request
+        见 [Request](./doc/Request.md) [RequestInterceptor](./doc/RequestInterceptor.md)
 
+        ### timeSync
 
-
-### RequestInterceptor
-
-`Request`中间件。提供几种钩子。钩子返回promise、obj、nothing，内部会处理成promise处理的 
-- `request` 参数`config`，请求前调用
-- `response` 参数`json` `config` 请求返回后，业务成功回调
-- `responseError` 参数 `reason` `config` 请求出错后，业务出错回调
-
-如果多个地方定义了钩子，则是通过promise一层then一层
-
-```
-// config 的是格式是
-{
-    url, // url
-    data, // 请求的数据
-    sucCode, // 标记那些code是成功的
-    options // 传给 fetch 的 optinos
-}
-```
-
-### format 
-
-~~deprecated~~，es6的挺好用
+        见 [timeSync](./doc/timeSync.md)
 
 ### param
 
-obj处理成url。 `param({a:1, b:2})` =》`a=1&b=2`
+        废弃，使用[query-string](https://github.com/sindresorhus/query-string)
 
 ### isElementInViewport
 
-是否在视窗内
+        `element`整个界面是否在视窗内
 
-### isElementOverViewport
 
-是否在视窗上可见
+        ### isElementInViewport
 
-### is 
+        `element`是否存在界面在视窗内
 
-处理各种判断用
-- `weixin` 是否微信
+
+        ### is
+
+        - weixin
+        - mac
+
+        ### contains
+
+        `contains(domA, domB)` domA 是否包含 domB
+
+        ### getElementPosition
+
+        获取元素的位置
+
+        ### Bundle
+
+        配合`react-router`做异步加载的一个组件
+
+        ### processReactRouterProps
+
+        `react-router`从2切4过程中，props会有变动，此方法做个兼容过度，具体见代码
+
+        ### processHistory
+
+        同上
+
+        ### keyMirror
+
+        `keyMirror({A: null}) // 返回 {A: 'A'}`
+
+        ### injectStore
+
+        配合 `mobx` 把 store 注入 组件
+
+
+        ```javascript
+        @injectStore({aStore})
+        class A extends React.Component {
+        render(){
+        console.log(this.props.aStore);
+        // ...
+        }
+        }
+        ```
+
+        ### groupByWithIndex
+
+        迁移 `lodash` 的时候 xxxBy 方法并没有提供所有， 估这里封装下
+
+

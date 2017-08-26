@@ -1,6 +1,9 @@
 import _ from 'lodash';
 
 var format = function (str, data) {
+
+    console.warn('废弃，用es6的');
+
     var result = str;
     if (arguments.length < 2) {
         return result;

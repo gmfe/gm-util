@@ -15,6 +15,7 @@ import keyMirror from './keyMirror';
 import injectStore from './injectStore';
 import groupByWithIndex from './groupByWithIndex';
 import timeSync from './timeSync';
+import getAllPriceWithAmount from './getAllPriceWithAmount';
 
 export {
     Request,
@@ -33,5 +34,6 @@ export {
     keyMirror,
     injectStore,
     groupByWithIndex,
-    timeSync
+    timeSync,
+    getAllPriceWithAmount
 };

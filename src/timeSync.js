@@ -22,7 +22,9 @@ const timeSync = {
         if (map[key]) {
             if (!map[key].id) {
                 map[key].id = setInterval(() => {
-                    _.each(map[key].cbs, cb => cb());
+                    _.each(map[key].cbs, cb => {
+                        cb();
+                    });
                 }, map[key].time);
             }
         }

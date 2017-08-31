@@ -1,6 +1,6 @@
 import Big from 'big.js';
 
-export default getAllPriceWithAmount = function (amount, sale_ratio, sale_price, std_sale_price) {
+export default function getAllPriceWithAmount(amount, sale_ratio, sale_price, std_sale_price) {
 
     const integerPart = Big(amount).div(sale_ratio).round();
     const decimalPart = Big(amount).mod(sale_ratio);

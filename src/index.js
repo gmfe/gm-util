@@ -16,7 +16,7 @@ import injectStore from './injectStore';
 import groupByWithIndex from './groupByWithIndex';
 import timeSync from './timeSync';
 import getAllPriceWithAmount from './getAllPriceWithAmount';
-import eventemitter from './eventemitter';
+import EventEmitter from './eventemitter';
 
 export {
     Request,
@@ -37,5 +37,5 @@ export {
     groupByWithIndex,
     timeSync,
     getAllPriceWithAmount,
-    eventemitter
+    EventEmitter
 };

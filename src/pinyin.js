@@ -1,3 +1,4 @@
+import _ from 'lodash';
 
 // 所有汉字按拼音排序后，每种拼音出现的第一个字作为 key
 const HANZI_TO_PINYIN = {
@@ -662,11 +663,7 @@ const COLLATOR = new Intl.Collator(['zh-CN']);
 const firstHanziCharCode = 19968; //0x4e00
 const lastHanziCharCode = 40869; //0x9FA5
 
-const pinyin = (target, style) => {
-    // 非字符
-    if (typeof target !== 'string') {
-        return target;
-    }
+const convert = (target, style) => {
     const charCode = target.charCodeAt(0);
     // 不在比对范围内
     if (charCode < firstHanziCharCode || charCode > lastHanziCharCode) {
@@ -699,6 +696,21 @@ const pinyin = (target, style) => {
     }
     cache[target] = pinyins[index];
     return (style === 'first_letter') ? pinyins[index].charAt(0): pinyins[index];
+};
+
+const pinyin = (source, style) => {
+    // 非字符
+    if (typeof source !== 'string') {
+        return source;
+    }
+
+    let foundPinyin = '';
+
+    _.forEach(source, target => {
+        foundPinyin += convert(target, style);
+    });
+
+    return foundPinyin;
 };
 
 export default pinyin;

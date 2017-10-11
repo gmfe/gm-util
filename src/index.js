@@ -17,6 +17,7 @@ import groupByWithIndex from './groupByWithIndex';
 import timeSync from './timeSync';
 import getAllPriceWithAmount from './getAllPriceWithAmount';
 import EventEmitter from './eventemitter';
+import pinyin from './pinyin';
 
 export {
     Request,
@@ -37,5 +38,6 @@ export {
     groupByWithIndex,
     timeSync,
     getAllPriceWithAmount,
-    EventEmitter
+    EventEmitter,
+    pinyin
 };

@@ -18,6 +18,7 @@ import timeSync from './timeSync';
 import getAllPriceWithAmount from './getAllPriceWithAmount';
 import EventEmitter from './eventemitter';
 import pinyin from './pinyin';
+import UUID from './uuid';
 
 export {
     Request,
@@ -39,5 +40,6 @@ export {
     timeSync,
     getAllPriceWithAmount,
     EventEmitter,
-    pinyin
+    pinyin,
+    UUID
 };

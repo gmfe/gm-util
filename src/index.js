@@ -19,6 +19,7 @@ import getAllPriceWithAmount from './getAllPriceWithAmount';
 import EventEmitter from './eventemitter';
 import pinyin from './pinyin';
 import UUID from './uuid';
+import pinYinFilter from './pinyinFilter';
 
 export {
     Request,
@@ -41,5 +42,6 @@ export {
     getAllPriceWithAmount,
     EventEmitter,
     pinyin,
-    UUID
+    UUID,
+    pinYinFilter
 };

@@ -681,7 +681,7 @@ const convert = (target, style) => {
     while (start <= end) {
         index = parseInt((start + end) / 2);
         hanzi = hanzis[index];
-        compareResult = target.localeCompare(target);
+        compareResult = target.localeCompare(hanzi);
         if (compareResult === 1) {
             start = index + 1;
         } else if (compareResult === -1) {

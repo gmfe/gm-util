@@ -658,8 +658,7 @@ if (isSafari) {
     };
     Object.assign(cache, safariFixedHanzis);
 }
-// 比较器
-const COLLATOR = new Intl.Collator(['zh-CN']);
+
 const firstHanziCharCode = 19968; //0x4e00
 const lastHanziCharCode = 40869; //0x9FA5
 
@@ -682,7 +681,7 @@ const convert = (target, style) => {
     while (start <= end) {
         index = parseInt((start + end) / 2);
         hanzi = hanzis[index];
-        compareResult = COLLATOR.compare(target, hanzi);
+        compareResult = target.localeCompare(target);
         if (compareResult === 1) {
             start = index + 1;
         } else if (compareResult === -1) {

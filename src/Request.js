@@ -2,6 +2,7 @@ import param from './param.js';
 import format from './format.js';
 import _ from 'lodash';
 import RequestInterceptor from './RequestInterceptor';
+import is from './is';
 
 var setPromiseTimeout = function (promise, ms) {
     if (ms === false) {
@@ -51,7 +52,7 @@ var processResponse = function (promise, url, sucCode, config) {
         }
     }).catch(function (reason) {
         // reason 有点复杂，各种实现，碰到一个解决一个吧
-        if (toString.call(reason) === '[object Promise]') {
+        if (is.promise(reason)) {
             return reason.catch(rea => {
                 console.error('%c*** Request catch %s', color, rea);
                 // reason 是个对象。目前先给字符串。吧。后续有需要在扩展

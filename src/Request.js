@@ -132,7 +132,16 @@ Request.prototype = {
         var t = this;
 
         return t._beforeRequest().then(function () {
-            var p = param(t._data);
+            const reqData = Object.assign({}, t._data);
+
+            _.forEach(reqData, (value, key) => {
+                if (typeof value === 'string') {
+                    reqData[key] = _.trim(value);
+                }
+            });
+
+            var p = param(reqData);
+
             var newUrl = t.url + (p ? ((t.url.indexOf('?') > -1 ? '&' : '?') + p) : '');
             return processResponse(fetch(newUrl, t.options), t.url, t.sucCode, t._getConfig());
         });

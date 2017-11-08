@@ -1,6 +1,11 @@
 import _ from 'lodash';
+let instance;
 const pinyin = (source, style) => {
-    // 所有汉字按拼音排序后，每种拼音出现的第一个字作为 key
+
+    if(instance) {
+        return instance(source, style);
+    }
+
     const HANZI_TO_PINYIN = {
         "阿": "a",
         "哎": "ai",
@@ -712,7 +717,12 @@ const pinyin = (source, style) => {
         return foundPinyin;
     };
 
-    return _pinyin(source, style);
+    return ((source, style) => {
+        if(!instance) {
+            instance = _pinyin;
+        }
+        return instance(source, style);
+    })(source, style);
 };
 
 export default pinyin;

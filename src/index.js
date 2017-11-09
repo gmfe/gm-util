@@ -23,6 +23,8 @@ import pinYinFilter from './pinyinFilter';
 import md5 from './md5';
 import configHeaders from './configHeaders';
 import getCharLength from './getCharLength';
+import isPathMatch from './isPathMatch';
+import setTitle from './setTitle';
 
 export {
     Request,
@@ -49,5 +51,7 @@ export {
     md5,
     pinYinFilter,
     configHeaders,
-    getCharLength
+    getCharLength,
+    isPathMatch,
+    setTitle
 };

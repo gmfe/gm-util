@@ -45,7 +45,7 @@ const negative = value => {
 
 const is = {
     weixin, mac,
-    pomise,
+    promise,
     number, integer, positive, negative
 };
 

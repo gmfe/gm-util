@@ -71,7 +71,7 @@ var Request = function (url, options) {
     this.url = url;
     this.sucCode = [0];
     this.options = Object.assign({
-        timeout: 10000, // number or false
+        timeout: 30000, // number or false
         method: 'get',
         headers: {
             'Accept': 'application/json'

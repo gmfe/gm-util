@@ -20,6 +20,7 @@ import EventEmitter from './eventemitter';
 import pinyin from './pinyin';
 import UUID from './uuid';
 import pinYinFilter from './pinyinFilter';
+import md5 from './md5';
 
 export {
     Request,
@@ -43,5 +44,6 @@ export {
     EventEmitter,
     pinyin,
     UUID,
+    md5,
     pinYinFilter
 };

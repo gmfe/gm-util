@@ -1,13 +1,18 @@
 import md5 from './md5';
 import UUID from './uuid';
+import RequestInterceptor from './RequestInterceptor';
 
-const configHeaders = (name, version, clientId) => {
-    const headers = {};
+const configHeaders = (name, version, clientId)=> {
+    RequestInterceptor.add({
+        request(config){
+            config.options.headers = config.options.headers || {};
 
-    headers['X-Guanmai-Client'] = `${name}/${version} ${clientId}`;
-    headers['X-Guanmai-Request-Id'] = md5(UUID.generate());
+            config.options.headers['X-Guanmai-Client'] = `${name}/${version} ${clientId}`;
+            config.options.headers['X-Guanmai-Request-Id'] = md5(UUID.generate());
 
-    return headers;
+            return config;
+        }
+    });
 };
 
 export default configHeaders;

@@ -21,6 +21,7 @@ import pinyin from './pinyin';
 import UUID from './uuid';
 import pinYinFilter from './pinyinFilter';
 import md5 from './md5';
+import configHeaders from './configHeaders';
 
 export {
     Request,
@@ -45,5 +46,6 @@ export {
     pinyin,
     UUID,
     md5,
-    pinYinFilter
+    pinYinFilter,
+    configHeaders
 };

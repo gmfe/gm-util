@@ -22,6 +22,7 @@ import UUID from './uuid';
 import pinYinFilter from './pinyinFilter';
 import md5 from './md5';
 import configHeaders from './configHeaders';
+import getCharLength from './getCharLength';
 
 export {
     Request,
@@ -47,5 +48,6 @@ export {
     UUID,
     md5,
     pinYinFilter,
-    configHeaders
+    configHeaders,
+    getCharLength
 };

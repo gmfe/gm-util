@@ -43,10 +43,15 @@ const negative = value => {
     return false;
 };
 
+const isChinese = value => {
+    return /[\u4E00-\u9FA5]/.test(value);
+};
+
 const is = {
     weixin, mac,
     promise,
-    number, integer, positive, negative
+    number, integer, positive, negative,
+    isChinese
 };
 
 export default is;

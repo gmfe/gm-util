@@ -3,6 +3,9 @@ import _ from 'lodash';
 
 // 字符串匹配，中文首字母拼音匹配，字母小写匹配
 const pinYinFilter = (list, filterText, what) => {
+    if (!filterText) {
+        return list || [];
+    }
     what = what || (v => v);
     filterText = filterText.toLowerCase();
     return _.filter(list, v => {

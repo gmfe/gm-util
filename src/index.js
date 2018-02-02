@@ -26,6 +26,7 @@ import getCharLength from './getCharLength';
 import isPathMatch from './isPathMatch';
 import setTitle from './setTitle';
 import getScrollTop from './getScrollTop';
+import getScrollLeft from './getScrollLeft';
 
 export {
     Request,
@@ -55,5 +56,6 @@ export {
     getCharLength,
     isPathMatch,
     setTitle,
-    getScrollTop
+    getScrollTop,
+    getScrollLeft
 };

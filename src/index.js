@@ -25,6 +25,7 @@ import configHeaders from './configHeaders';
 import getCharLength from './getCharLength';
 import isPathMatch from './isPathMatch';
 import setTitle from './setTitle';
+import getScrollTop from './getScrollTop';
 
 export {
     Request,
@@ -53,5 +54,6 @@ export {
     configHeaders,
     getCharLength,
     isPathMatch,
-    setTitle
+    setTitle,
+    getScrollTop
 };

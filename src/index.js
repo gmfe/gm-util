@@ -15,7 +15,6 @@ import keyMirror from './keyMirror';
 import injectStore from './injectStore';
 import groupByWithIndex from './groupByWithIndex';
 import timeSync from './timeSync';
-import getAllPriceWithAmount from './getAllPriceWithAmount';
 import EventEmitter from './eventemitter';
 import pinyin from './pinyin';
 import UUID from './uuid';
@@ -27,6 +26,7 @@ import isPathMatch from './isPathMatch';
 import setTitle from './setTitle';
 import getScrollTop from './getScrollTop';
 import getScrollLeft from './getScrollLeft';
+import loadScript from './loadScript';
 
 export {
     Request,
@@ -46,7 +46,6 @@ export {
     injectStore,
     groupByWithIndex,
     timeSync,
-    getAllPriceWithAmount,
     EventEmitter,
     pinyin,
     UUID,
@@ -57,5 +56,6 @@ export {
     isPathMatch,
     setTitle,
     getScrollTop,
-    getScrollLeft
+    getScrollLeft,
+    loadScript
 };

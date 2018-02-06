@@ -47,11 +47,20 @@ const isChinese = value => {
     return /[\u4E00-\u9FA5]/.test(value);
 };
 
+// 强密码要求: 字母和数字组合,8位及以上
+const strongPassword = (value) => {
+    if (typeof value !== 'string') {
+        return false;
+    }
+    return /^(?![0-9]+$)(?![a-z]+$)[0-9a-z]{8,}$/i.test(value);
+};
+
 const is = {
     weixin, mac,
     promise,
     number, integer, positive, negative,
-    isChinese
+    isChinese,
+    strongPassword
 };
 
 export default is;

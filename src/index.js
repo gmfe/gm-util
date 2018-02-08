@@ -15,6 +15,7 @@ import keyMirror from './keyMirror';
 import injectStore from './injectStore';
 import groupByWithIndex from './groupByWithIndex';
 import timeSync from './timeSync';
+import getAllPriceWithAmount from './getAllPriceWithAmount';
 import EventEmitter from './eventemitter';
 import pinyin from './pinyin';
 import UUID from './uuid';
@@ -46,6 +47,7 @@ export {
     injectStore,
     groupByWithIndex,
     timeSync,
+    getAllPriceWithAmount,
     EventEmitter,
     pinyin,
     UUID,

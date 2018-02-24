@@ -3,6 +3,9 @@ import UUID from './uuid';
 import RequestInterceptor from './RequestInterceptor';
 
 const configHeaders = (name, __VERSION__, clientId)=> {
+
+    console.warn('configHeaders is deprecated. Use gm-service/common/config_headers.js instead.');
+
     RequestInterceptor.add({
         request(config){
             config.options.headers = config.options.headers || {};

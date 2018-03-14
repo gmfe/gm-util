@@ -28,6 +28,7 @@ import setTitle from './setTitle';
 import getScrollTop from './getScrollTop';
 import getScrollLeft from './getScrollLeft';
 import loadScript from './loadScript';
+import importComponent from './importComponent';
 
 export {
     Request,
@@ -40,7 +41,7 @@ export {
     contains,
     createChainedFunction,
     getElementPosition,
-    Bundle,
+    Bundle, importComponent,
     processReactRouterProps,
     processHistory,
     keyMirror,

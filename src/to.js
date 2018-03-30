@@ -8,7 +8,7 @@ function toThousandStrWithNum(num) {
     return parseFloat(Big(num), 10).toLocaleString();
 }
 
-export {
+export default {
     toThousandStr,
     toThousandStrWithNum
 };

@@ -25,6 +25,7 @@ import configHeaders from './configHeaders';
 import getCharLength from './getCharLength';
 import isPathMatch from './isPathMatch';
 import setTitle from './setTitle';
+import setIco from './setIco';
 import getScrollTop from './getScrollTop';
 import getScrollLeft from './getScrollLeft';
 import loadScript from './loadScript';
@@ -58,7 +59,7 @@ export {
     configHeaders,
     getCharLength,
     isPathMatch,
-    setTitle,
+    setTitle, setIco,
     getScrollTop,
     getScrollLeft,
     loadScript,

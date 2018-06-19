@@ -3,6 +3,7 @@ import format from './format.js';
 import _ from 'lodash';
 import RequestInterceptor from './RequestInterceptor';
 import is from './is';
+import {getGmUtilsLocale} from './locale';
 
 var setPromiseTimeout = function (promise, ms) {
     if (ms === false) {
@@ -10,7 +11,7 @@ var setPromiseTimeout = function (promise, ms) {
     }
     return new Promise((resolve, reject) => {
         setTimeout(() => {
-            reject('连接超时，请稍后重试');
+            reject(getGmUtilsLocale('连接超时'));
         }, ms);
         promise.then(resolve, reject);
     });
@@ -25,20 +26,9 @@ var processResponse = function (promise, url, sucCode, config) {
 
     return setPromiseTimeout(promise, config.options.timeout).then(function (res) {
         if (res.ok) {
-            var ct = res.headers.get('content-type');
-            // 后台可能会有登录拦截，返回登录页面
-            if (ct.indexOf('text/html') > -1) {
-                return res.text().then(html => {
-                    if (html.indexOf('title>登录</title') > -1) {
-                        return Promise.reject('请登录!');
-                    }
-                    return Promise.reject('未知错误，请刷新页面重试！！！！！');
-                });
-            } else {
-                return res.json();
-            }
+            return res.json();
         }
-        return Promise.reject(format('服务器错误 {status} {statusText}', res));
+        return Promise.reject(format(`${getGmUtilsLocale('服务器错误')} {status} {statusText}`, res));
     }).then((json) => {
         return RequestInterceptor.interceptor.response(json, config);
     }, (reason) => {
@@ -48,7 +38,7 @@ var processResponse = function (promise, url, sucCode, config) {
             return json;
         } else {
             console.log('%c*** Request url: %s、code: %s、msg: %s', color, url, json.code, json.msg);
-            return Promise.reject(json.msg || '未知错误');
+            return Promise.reject(json.msg || getGmUtilsLocale('未知错误'));
         }
     }).catch(function (reason) {
         // reason 有点复杂，各种实现，碰到一个解决一个吧

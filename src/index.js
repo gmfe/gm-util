@@ -31,7 +31,7 @@ import getScrollLeft from './getScrollLeft';
 import loadScript from './loadScript';
 import importComponent from './importComponent';
 import to from './to';
-import {getGmUtilsLocale, setGmUtilsLocale} from './locale';
+import {getLocale, setLocale} from './locale';
 
 export {
     Request,
@@ -65,6 +65,6 @@ export {
     getScrollLeft,
     loadScript,
     to,
-    getGmUtilsLocale,
-    setGmUtilsLocale
+    getLocale,
+    setLocale
 };

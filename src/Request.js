@@ -3,7 +3,7 @@ import format from './format.js';
 import _ from 'lodash';
 import RequestInterceptor from './RequestInterceptor';
 import is from './is';
-import {getGmUtilsLocale} from './locale';
+import {getLocale} from './locale';
 
 var setPromiseTimeout = function (promise, ms) {
     if (ms === false) {
@@ -11,7 +11,7 @@ var setPromiseTimeout = function (promise, ms) {
     }
     return new Promise((resolve, reject) => {
         setTimeout(() => {
-            reject(getGmUtilsLocale('连接超时'));
+            reject(getLocale('连接超时'));
         }, ms);
         promise.then(resolve, reject);
     });
@@ -28,7 +28,7 @@ var processResponse = function (promise, url, sucCode, config) {
         if (res.ok) {
             return res.json();
         }
-        return Promise.reject(format(`${getGmUtilsLocale('服务器错误')} {status} {statusText}`, res));
+        return Promise.reject(format(`${getLocale('服务器错误')} {status} {statusText}`, res));
     }).then((json) => {
         return RequestInterceptor.interceptor.response(json, config);
     }, (reason) => {
@@ -38,7 +38,7 @@ var processResponse = function (promise, url, sucCode, config) {
             return json;
         } else {
             console.log('%c*** Request url: %s、code: %s、msg: %s', color, url, json.code, json.msg);
-            return Promise.reject(json.msg || getGmUtilsLocale('未知错误'));
+            return Promise.reject(json.msg || getLocale('未知错误'));
         }
     }).catch(function (reason) {
         // reason 有点复杂，各种实现，碰到一个解决一个吧

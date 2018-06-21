@@ -14,15 +14,15 @@ const locales = {
 };
 let lng = 'zh';
 
-function setGmUtilsLocale(lng) {
+function setLocale(lng) {
     lng = lng;
 }
 
-function getGmUtilsLocale(key) {
+function getLocale(key) {
     return locales[lng][key];
 }
 
 export {
-    setGmUtilsLocale,
-    getGmUtilsLocale
+    setLocale,
+    getLocale
 };

@@ -31,6 +31,7 @@ import getScrollLeft from './getScrollLeft';
 import loadScript from './loadScript';
 import importComponent from './importComponent';
 import to from './to';
+import {getLocale, setLocale} from './locale';
 
 export {
     Request,
@@ -63,5 +64,7 @@ export {
     getScrollTop,
     getScrollLeft,
     loadScript,
-    to
+    to,
+    getLocale,
+    setLocale
 };

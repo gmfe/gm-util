@@ -140,7 +140,7 @@ Request.prototype = {
       var p = param(reqData)
 
       var newUrl = t.url + (p ? ((t.url.indexOf('?') > -1 ? '&' : '?') + p) : '')
-      return processResponse(fetch(newUrl, t.options), t.url, t.sucCode, t._getConfig())
+      return processResponse(window.fetch(newUrl, t.options), t.url, t.sucCode, t._getConfig())
     })
   },
   post: function () {
@@ -154,7 +154,7 @@ Request.prototype = {
       if (toString.call(data) === '[object Object]') {
         // 如果存在File，就用表单上传
         if (_.find(data, v => toString.call(v) === '[object File]')) {
-          body = new FormData()
+          body = new window.FormData()
           for (var e in data) {
             body.append(e, data[e])
           }
@@ -169,7 +169,7 @@ Request.prototype = {
         body = data
       }
       t.options.body = body
-      return processResponse(fetch(t.url, t.options), t.url, t.sucCode, t._getConfig())
+      return processResponse(window.fetch(t.url, t.options), t.url, t.sucCode, t._getConfig())
     })
   }
 }

@@ -1,10 +1,10 @@
 function loadScript (url, cb) {
-    const elem = window.document.createElement('script');
-    elem.type = 'text/javascript';
-    elem.charset = 'utf-8';
-    elem.addEventListener('load', cb, false);
-    elem.src = url;
-    window.document.body.appendChild(elem);
+  const elem = window.document.createElement('script')
+  elem.type = 'text/javascript'
+  elem.charset = 'utf-8'
+  elem.addEventListener('load', cb, false)
+  elem.src = url
+  window.document.body.appendChild(elem)
 }
 
-export default loadScript;
+export default loadScript

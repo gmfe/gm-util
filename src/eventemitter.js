@@ -1,5 +1,6 @@
 let has = Object.prototype.hasOwnProperty
-    , prefix = '~';
+
+let prefix = '~'
 
 /**
  * Constructor to create a storage for our `EE` objects.
@@ -8,7 +9,7 @@ let has = Object.prototype.hasOwnProperty
  * @constructor
  * @private
  */
-function Events() {
+function Events () {
 }
 
 //
@@ -19,13 +20,13 @@ function Events() {
 // overridden or used as an attack vector.
 //
 if (Object.create) {
-    Events.prototype = Object.create(null);
+  Events.prototype = Object.create(null)
 
-    //
-    // This hack is needed because the `__proto__` property is still inherited in
-    // some old browsers like Android 4, iPhone 5.1, Opera 11 and Safari 5.
-    //
-    if (!new Events().__proto__) prefix = false;
+  //
+  // This hack is needed because the `__proto__` property is still inherited in
+  // some old browsers like Android 4, iPhone 5.1, Opera 11 and Safari 5.
+  //
+  if (!new Events().__proto__) prefix = false /* eslint-disable-line */
 }
 
 /**
@@ -37,10 +38,10 @@ if (Object.create) {
  * @constructor
  * @private
  */
-function EE(fn, context, once) {
-    this.fn = fn;
-    this.context = context;
-    this.once = once || false;
+function EE (fn, context, once) {
+  this.fn = fn
+  this.context = context
+  this.once = once || false
 }
 
 /**
@@ -54,15 +55,21 @@ function EE(fn, context, once) {
  * @returns {EventEmitter}
  * @private
  */
-function addListener(emitter, event, fn, context, once) {
-    var listener = new EE(fn, context || emitter, once)
-        , evt = prefix ? prefix + event : event;
+function addListener (emitter, event, fn, context, once) {
+  var listener = new EE(fn, context || emitter, once)
 
-    if (!emitter._events[evt]) emitter._events[evt] = listener, emitter._eventsCount++;
-    else if (!emitter._events[evt].fn) emitter._events[evt].push(listener);
-    else emitter._events[evt] = [emitter._events[evt], listener];
+  var evt = prefix ? prefix + event : event
 
-    return emitter;
+  if (!emitter._events[evt]) {
+    emitter._events[evt] = listener
+    emitter._eventsCount++
+  } else if (!emitter._events[evt].fn) {
+    emitter._events[evt].push(listener)
+  } else {
+    emitter._events[evt] = [emitter._events[evt], listener]
+  }
+
+  return emitter
 }
 
 /**
@@ -72,9 +79,9 @@ function addListener(emitter, event, fn, context, once) {
  * @param {(String|Symbol)} evt The Event name.
  * @private
  */
-function clearEvent(emitter, evt) {
-    if (--emitter._eventsCount === 0) emitter._events = new Events();
-    else delete emitter._events[evt];
+function clearEvent (emitter, evt) {
+  if (--emitter._eventsCount === 0) emitter._events = new Events()
+  else delete emitter._events[evt]
 }
 
 /**
@@ -84,9 +91,9 @@ function clearEvent(emitter, evt) {
  * @constructor
  * @public
  */
-function EventEmitter() {
-    this._events = new Events();
-    this._eventsCount = 0;
+function EventEmitter () {
+  this._events = new Events()
+  this._eventsCount = 0
 }
 
 /**
@@ -96,23 +103,25 @@ function EventEmitter() {
  * @returns {Array}
  * @public
  */
-EventEmitter.prototype.eventNames = function eventNames() {
-    var names = []
-        , events
-        , name;
+EventEmitter.prototype.eventNames = function eventNames () {
+  var names = []
 
-    if (this._eventsCount === 0) return names;
+  var events
 
-    for (name in (events = this._events)) {
-        if (has.call(events, name)) names.push(prefix ? name.slice(1) : name);
-    }
+  var name
 
-    if (Object.getOwnPropertySymbols) {
-        return names.concat(Object.getOwnPropertySymbols(events));
-    }
+  if (this._eventsCount === 0) return names
 
-    return names;
-};
+  for (name in (events = this._events)) {
+    if (has.call(events, name)) names.push(prefix ? name.slice(1) : name)
+  }
+
+  if (Object.getOwnPropertySymbols) {
+    return names.concat(Object.getOwnPropertySymbols(events))
+  }
+
+  return names
+}
 
 /**
  * Return the listeners registered for a given event.
@@ -122,20 +131,21 @@ EventEmitter.prototype.eventNames = function eventNames() {
  * @returns {(Array|Boolean)}
  * @public
  */
-EventEmitter.prototype.listeners = function listeners(event, exists) {
-    var evt = prefix ? prefix + event : event
-        , available = this._events[evt];
+EventEmitter.prototype.listeners = function listeners (event, exists) {
+  var evt = prefix ? prefix + event : event
 
-    if (exists) return !!available;
-    if (!available) return [];
-    if (available.fn) return [available.fn];
+  var available = this._events[evt]
 
-    for (var i = 0, l = available.length, ee = new Array(l); i < l; i++) {
-        ee[i] = available[i].fn;
-    }
+  if (exists) return !!available
+  if (!available) return []
+  if (available.fn) return [available.fn]
 
-    return ee;
-};
+  for (var i = 0, l = available.length, ee = new Array(l); i < l; i++) {
+    ee[i] = available[i].fn
+  }
+
+  return ee
+}
 
 /**
  * Calls each of the listeners registered for a given event.
@@ -144,71 +154,77 @@ EventEmitter.prototype.listeners = function listeners(event, exists) {
  * @returns {Boolean} `true` if the event had listeners, else `false`.
  * @public
  */
-EventEmitter.prototype.emit = function emit(event, a1, a2, a3, a4, a5) {
-    var evt = prefix ? prefix + event : event;
+EventEmitter.prototype.emit = function emit (event, a1, a2, a3, a4, a5) {
+  var evt = prefix ? prefix + event : event
 
-    if (!this._events[evt]) return false;
+  if (!this._events[evt]) return false
 
-    var listeners = this._events[evt]
-        , len = arguments.length
-        , args
-        , i;
+  var listeners = this._events[evt]
 
-    if (listeners.fn) {
-        if (listeners.once) this.removeListener(event, listeners.fn, undefined, true);
+  var len = arguments.length
 
-        switch (len) {
-            case 1:
-                return listeners.fn.call(listeners.context), true;
-            case 2:
-                return listeners.fn.call(listeners.context, a1), true;
-            case 3:
-                return listeners.fn.call(listeners.context, a1, a2), true;
-            case 4:
-                return listeners.fn.call(listeners.context, a1, a2, a3), true;
-            case 5:
-                return listeners.fn.call(listeners.context, a1, a2, a3, a4), true;
-            case 6:
-                return listeners.fn.call(listeners.context, a1, a2, a3, a4, a5), true;
-        }
+  var args
 
-        for (i = 1, args = new Array(len - 1); i < len; i++) {
-            args[i - 1] = arguments[i];
-        }
+  var i
 
-        listeners.fn.apply(listeners.context, args);
-    } else {
-        var length = listeners.length
-            , j;
+  if (listeners.fn) {
+    if (listeners.once) this.removeListener(event, listeners.fn, undefined, true)
 
-        for (i = 0; i < length; i++) {
-            if (listeners[i].once) this.removeListener(event, listeners[i].fn, undefined, true);
-
-            switch (len) {
-                case 1:
-                    listeners[i].fn.call(listeners[i].context);
-                    break;
-                case 2:
-                    listeners[i].fn.call(listeners[i].context, a1);
-                    break;
-                case 3:
-                    listeners[i].fn.call(listeners[i].context, a1, a2);
-                    break;
-                case 4:
-                    listeners[i].fn.call(listeners[i].context, a1, a2, a3);
-                    break;
-                default:
-                    if (!args) for (j = 1, args = new Array(len - 1); j < len; j++) {
-                        args[j - 1] = arguments[j];
-                    }
-
-                    listeners[i].fn.apply(listeners[i].context, args);
-            }
-        }
+    switch (len) {
+      case 1:
+        return (listeners.fn.call(listeners.context), true)
+      case 2:
+        return (listeners.fn.call(listeners.context, a1), true)
+      case 3:
+        return (listeners.fn.call(listeners.context, a1, a2), true)
+      case 4:
+        return (listeners.fn.call(listeners.context, a1, a2, a3), true)
+      case 5:
+        return (listeners.fn.call(listeners.context, a1, a2, a3, a4), true)
+      case 6:
+        return (listeners.fn.call(listeners.context, a1, a2, a3, a4, a5), true)
     }
 
-    return true;
-};
+    for (i = 1, args = new Array(len - 1); i < len; i++) {
+      args[i - 1] = arguments[i]
+    }
+
+    listeners.fn.apply(listeners.context, args)
+  } else {
+    var length = listeners.length
+
+    var j
+
+    for (i = 0; i < length; i++) {
+      if (listeners[i].once) this.removeListener(event, listeners[i].fn, undefined, true)
+
+      switch (len) {
+        case 1:
+          listeners[i].fn.call(listeners[i].context)
+          break
+        case 2:
+          listeners[i].fn.call(listeners[i].context, a1)
+          break
+        case 3:
+          listeners[i].fn.call(listeners[i].context, a1, a2)
+          break
+        case 4:
+          listeners[i].fn.call(listeners[i].context, a1, a2, a3)
+          break
+        default:
+          if (!args) {
+            for (j = 1, args = new Array(len - 1); j < len; j++) {
+              args[j - 1] = arguments[j]
+            }
+          }
+
+          listeners[i].fn.apply(listeners[i].context, args)
+      }
+    }
+  }
+
+  return true
+}
 
 /**
  * Add a listener for a given event.
@@ -219,9 +235,9 @@ EventEmitter.prototype.emit = function emit(event, a1, a2, a3, a4, a5) {
  * @returns {EventEmitter} `this`.
  * @public
  */
-EventEmitter.prototype.on = function on(event, fn, context) {
-    return addListener(this, event, fn, context, false);
-};
+EventEmitter.prototype.on = function on (event, fn, context) {
+  return addListener(this, event, fn, context, false)
+}
 
 /**
  * Add a one-time listener for a given event.
@@ -232,9 +248,9 @@ EventEmitter.prototype.on = function on(event, fn, context) {
  * @returns {EventEmitter} `this`.
  * @public
  */
-EventEmitter.prototype.once = function once(event, fn, context) {
-    return addListener(this, event, fn, context, true);
-};
+EventEmitter.prototype.once = function once (event, fn, context) {
+  return addListener(this, event, fn, context, true)
+}
 
 /**
  * Remove the listeners of a given event.
@@ -246,45 +262,45 @@ EventEmitter.prototype.once = function once(event, fn, context) {
  * @returns {EventEmitter} `this`.
  * @public
  */
-EventEmitter.prototype.removeListener = function removeListener(event, fn, context, once) {
-    var evt = prefix ? prefix + event : event;
+EventEmitter.prototype.removeListener = function removeListener (event, fn, context, once) {
+  var evt = prefix ? prefix + event : event
 
-    if (!this._events[evt]) return this;
-    if (!fn) {
-        clearEvent(this, evt);
-        return this;
-    }
+  if (!this._events[evt]) return this
+  if (!fn) {
+    clearEvent(this, evt)
+    return this
+  }
 
-    var listeners = this._events[evt];
+  var listeners = this._events[evt]
 
-    if (listeners.fn) {
-        if (
-            listeners.fn === fn &&
+  if (listeners.fn) {
+    if (
+      listeners.fn === fn &&
             (!once || listeners.once) &&
             (!context || listeners.context === context)
-        ) {
-            clearEvent(this, evt);
-        }
-    } else {
-        for (var i = 0, events = [], length = listeners.length; i < length; i++) {
-            if (
-                listeners[i].fn !== fn ||
+    ) {
+      clearEvent(this, evt)
+    }
+  } else {
+    for (var i = 0, events = [], length = listeners.length; i < length; i++) {
+      if (
+        listeners[i].fn !== fn ||
                 (once && !listeners[i].once) ||
                 (context && listeners[i].context !== context)
-            ) {
-                events.push(listeners[i]);
-            }
-        }
-
-        //
-        // Reset the array, or remove it completely if we have no more listeners.
-        //
-        if (events.length) this._events[evt] = events.length === 1 ? events[0] : events;
-        else clearEvent(this, evt);
+      ) {
+        events.push(listeners[i])
+      }
     }
 
-    return this;
-};
+    //
+    // Reset the array, or remove it completely if we have no more listeners.
+    //
+    if (events.length) this._events[evt] = events.length === 1 ? events[0] : events
+    else clearEvent(this, evt)
+  }
+
+  return this
+}
 
 /**
  * Remove all listeners, or those of the specified event.
@@ -293,41 +309,41 @@ EventEmitter.prototype.removeListener = function removeListener(event, fn, conte
  * @returns {EventEmitter} `this`.
  * @public
  */
-EventEmitter.prototype.removeAllListeners = function removeAllListeners(event) {
-    var evt;
+EventEmitter.prototype.removeAllListeners = function removeAllListeners (event) {
+  var evt
 
-    if (event) {
-        evt = prefix ? prefix + event : event;
-        if (this._events[evt]) clearEvent(this, evt);
-    } else {
-        this._events = new Events();
-        this._eventsCount = 0;
-    }
+  if (event) {
+    evt = prefix ? prefix + event : event
+    if (this._events[evt]) clearEvent(this, evt)
+  } else {
+    this._events = new Events()
+    this._eventsCount = 0
+  }
 
-    return this;
-};
+  return this
+}
 
 //
 // Alias methods names because people roll like that.
 //
-EventEmitter.prototype.off = EventEmitter.prototype.removeListener;
-EventEmitter.prototype.addListener = EventEmitter.prototype.on;
+EventEmitter.prototype.off = EventEmitter.prototype.removeListener
+EventEmitter.prototype.addListener = EventEmitter.prototype.on
 
 //
 // This function doesn't apply anymore.
 //
-EventEmitter.prototype.setMaxListeners = function setMaxListeners() {
-    return this;
-};
+EventEmitter.prototype.setMaxListeners = function setMaxListeners () {
+  return this
+}
 
 //
 // Expose the prefix.
 //
-EventEmitter.prefixed = prefix;
+EventEmitter.prefixed = prefix
 
 //
 // Allow `EventEmitter` to be imported as module namespace.
 //
-EventEmitter.EventEmitter = EventEmitter;
+EventEmitter.EventEmitter = EventEmitter
 
-export default EventEmitter;
+export default EventEmitter

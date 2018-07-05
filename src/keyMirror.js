@@ -1,11 +1,11 @@
-export default function keyMirror(obj) {
-    const ret = {};
-    let key;
-    for (key in obj) {
-        if (!obj.hasOwnProperty(key)) {
-            continue;
-        }
-        ret[key] = key;
+export default function keyMirror (obj) {
+  const ret = {}
+  let key
+  for (key in obj) {
+    if (!obj.hasOwnProperty(key)) {
+      continue
     }
-    return ret;
+    ret[key] = key
+  }
+  return ret
 }

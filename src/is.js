@@ -6,6 +6,8 @@ const mac = () => window.navigator.userAgent.indexOf('Mac') > -1
 
 const promise = (arg) => window.toString.call(arg) === '[object Promise]'
 
+const isMobile = window.navigator.userAgent.indexOf('Mobile') > -1
+
 const number = value => {
   value += ''
 
@@ -66,7 +68,8 @@ const is = {
   positive,
   negative,
   isChinese,
-  strongPassword
+  strongPassword,
+  isMobile
 }
 
 export default is

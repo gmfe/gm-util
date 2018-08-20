@@ -8,7 +8,7 @@ function setTitle (title) {
   }
 
   const iframe = window.document.createElement('iframe')
-  iframe.src = '../abcdefg.pgn'
+  iframe.src = '//js.guanmai.cn/static_storage/json/common/logo/default/favicon.ico'
 
   const listener = () => {
     setTimeout(() => {

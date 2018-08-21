@@ -20,6 +20,7 @@ import EventEmitter from './eventemitter'
 import pinyin from './pinyin'
 import UUID from './uuid'
 import pinYinFilter from './pinyinFilter'
+import searchFilter from './searchFilter'
 import md5 from './md5'
 import configHeaders from './configHeaders'
 import getCharLength from './getCharLength'
@@ -57,6 +58,7 @@ export {
   UUID,
   md5,
   pinYinFilter,
+  searchFilter,
   configHeaders,
   getCharLength,
   isPathMatch,

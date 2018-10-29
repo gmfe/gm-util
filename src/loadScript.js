@@ -4,6 +4,7 @@ function loadScript (url, cb) {
   elem.charset = 'utf-8'
   elem.addEventListener('load', cb, false)
   elem.src = url
+  elem.crossOrigin = 'anonymous'
   window.document.body.appendChild(elem)
 }
 

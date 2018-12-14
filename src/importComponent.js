@@ -37,6 +37,7 @@ class ImportCom extends React.Component {
 }
 
 const importComponent = (load, options = {}) => {
+  console.warn('importComponent is deprecated. Use react-loadable instead.')
   return (props) => {
     return <ImportCom {...props} __load={load} __options={options} />
   }

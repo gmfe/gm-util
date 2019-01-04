@@ -59,6 +59,14 @@ const strongPassword = (value) => {
   return /^(?![0-9]+$)(?![a-z]+$)[0-9a-z]{8,}$/i.test(value)
 }
 
+let isWeixinMP = null
+let weixinMP = () => {
+  if (isWeixinMP === null) {
+    isWeixinMP = window.__wxjs_environment === 'miniprogram' || /miniprogram/.test(window.navigator.userAgent.toLowerCase())
+  }
+  return isWeixinMP
+}
+
 const is = {
   weixin,
   mac,
@@ -69,7 +77,8 @@ const is = {
   negative,
   isChinese,
   strongPassword,
-  mobile
+  mobile,
+  weixinMP
 }
 
 export default is

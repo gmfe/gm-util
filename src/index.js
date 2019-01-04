@@ -14,6 +14,7 @@ import Bundle from './bundle'
 import keyMirror from './keyMirror'
 import injectStore from './injectStore'
 import groupByWithIndex from './groupByWithIndex'
+import sortByWithIndex from './sortByWithIndex'
 import timeSync from './timeSync'
 import getAllPriceWithAmount from './getAllPriceWithAmount'
 import EventEmitter from './eventemitter'
@@ -32,41 +33,50 @@ import getScrollLeft from './getScrollLeft'
 import loadScript from './loadScript'
 import importComponent from './importComponent'
 import to from './to'
-import {getLocale, setLocale} from './locale'
+import { getLocale, setLocale } from './locale'
 
 export {
-  Request,
-  RequestInterceptor,
-  format,
-  param,
-  isElementInViewport,
-  isElementOverViewport,
-  is,
-  contains,
-  createChainedFunction,
-  getElementPosition,
+  /* will deprecated */
   Bundle, importComponent,
-  processReactRouterProps,
-  processHistory,
-  keyMirror,
   injectStore,
-  groupByWithIndex,
+  keyMirror,
+  format, param,
   timeSync,
   getAllPriceWithAmount,
-  EventEmitter,
-  pinyin,
-  UUID,
-  md5,
-  pinYinFilter,
-  searchFilter,
   configHeaders,
-  getCharLength,
+  /* will deprecated */
+
+  Request,
+  RequestInterceptor,
+
+  processReactRouterProps,
+  processHistory,
+
+  contains,
+  isElementInViewport,
+  isElementOverViewport,
+  getElementPosition,
+
   isPathMatch,
   setTitle, setIco,
   getScrollTop,
   getScrollLeft,
   loadScript,
+  is,
+
+  EventEmitter,
+  createChainedFunction,
+
+  groupByWithIndex, sortByWithIndex,
+
+  pinyin, pinYinFilter, searchFilter,
+
+  UUID,
+  md5,
+  getCharLength,
+
   to,
+
   getLocale,
   setLocale
 }

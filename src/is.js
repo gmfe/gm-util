@@ -67,6 +67,18 @@ let weixinMP = () => {
   return isWeixinMP
 }
 
+let isiOS = null
+let iOS = () => {
+  if (isiOS === null) {
+    isiOS = !!window.navigator.userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/)
+  }
+  return isiOS
+}
+
+const numberOrChar = value => {
+  return /^(\d|[a-z]|[A-Z])+$/g.test(value)
+}
+
 const is = {
   weixin,
   mac,
@@ -78,7 +90,9 @@ const is = {
   isChinese,
   strongPassword,
   mobile,
-  weixinMP
+  weixinMP,
+  iOS,
+  numberOrChar
 }
 
 export default is

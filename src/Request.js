@@ -28,6 +28,10 @@ var processResponse = function (promise, url, sucCode, config) {
     if (res.ok) {
       return res.json()
     }
+    let { status } = res
+    if(status >= 550 && status <= 569) {
+      return Promise.reject(getLocale('系统繁忙'))
+    }
     return Promise.reject(format(`${getLocale('服务器错误')} {status} {statusText}`, res))
   }).then((json) => {
     return RequestInterceptor.interceptor.response(json, config)

@@ -1,5 +1,4 @@
 .idea
 /package-lock.json
-/.babelrc
 /.eslintrc.js
 /.gitignore

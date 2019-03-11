@@ -33,6 +33,7 @@ import getScrollLeft from './getScrollLeft'
 import loadScript from './loadScript'
 import importComponent from './importComponent'
 import to from './to'
+import formatNumber from './formatNumber'
 import { getLocale, setLocale } from './locale'
 
 export {
@@ -76,7 +77,7 @@ export {
   getCharLength,
 
   to,
-
+  formatNumber,
   getLocale,
   setLocale
 }

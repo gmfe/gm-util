@@ -3,7 +3,7 @@ import is from './is'
 
 let instance
 const pinyin = (source, style) => {
-  if (is.mobile && !is.iOS()) {
+  if (is.android()) {
     console.warn('移动端 Android 存在不支持 pinyin，因 localeCompare 存在兼容性问题')
   }
 

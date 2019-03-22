@@ -12,7 +12,7 @@ const pinYinFilter = (list, filterText, what) => {
   filterText = filterText.toLowerCase()
 
   // 移动 android 不支持 localeCompare
-  if (is.mobile && !is.iOS()) {
+  if (is.android()) {
     console.warn('移动端 Android 存在不支持 pinYinFilter，直接采用字符串匹配，因 localeCompare 存在兼容性问题')
     return _.filter(list, v => {
       let w = what(v)

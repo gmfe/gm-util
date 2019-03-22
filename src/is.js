@@ -79,6 +79,10 @@ const numberOrChar = value => {
   return /^(\d|[a-z]|[A-Z])+$/g.test(value)
 }
 
+const android = () => {
+  return window.navigator.userAgent.indexOf('Android') > -1
+}
+
 const is = {
   weixin,
   mac,
@@ -92,6 +96,7 @@ const is = {
   mobile,
   weixinMP,
   iOS,
+  android,
   numberOrChar
 }
 

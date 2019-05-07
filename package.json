@@ -1,6 +1,6 @@
 {
   "name": "gm-util",
-  "version": "5.10.2",
+  "version": "5.10.3",
   "description": "",
   "main": "src/index.js",
   "scripts": {

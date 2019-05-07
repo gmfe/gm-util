@@ -2,11 +2,15 @@ import _ from 'lodash'
 
 const weixin = () => /MicroMessenger/i.test(navigator.userAgent)
 
-const mac = () => window.navigator.userAgent.indexOf('Mac') > -1
+const mac = () => window.navigator.userAgent.includes('Mac')
 
 const promise = (arg) => window.toString.call(arg) === '[object Promise]'
 
-const mobile = window.navigator.userAgent.indexOf('Mobile') > -1
+// 废弃
+const mobile = window.navigator.userAgent.includes('Mobile')
+
+// 想不出其他名字了
+const phone = () => window.navigator.userAgent.includes('Mobile')
 
 const number = value => {
   value += ''
@@ -15,7 +19,7 @@ const number = value => {
     return false
   }
 
-  if (value.indexOf('x') > -1) {
+  if (value.includes('x')) {
     return false
   }
 
@@ -47,7 +51,7 @@ const negative = value => {
   return false
 }
 
-const isChinese = value => {
+const chinese = value => {
   return /[\u4E00-\u9FA5]/.test(value)
 }
 
@@ -80,24 +84,31 @@ const numberOrChar = value => {
 }
 
 const android = () => {
-  return window.navigator.userAgent.indexOf('Android') > -1
+  return window.navigator.userAgent.includes('Android')
 }
 
 const is = {
+  // 废弃
+  isChinese: chinese, mobile,
+
   weixin,
   mac,
+  phone,
+  weixinMP,
+  iOS,
+  android,
+
   promise,
+
+  numberOrChar,
   number,
   integer,
   positive,
   negative,
-  isChinese,
-  strongPassword,
-  mobile,
-  weixinMP,
-  iOS,
-  android,
-  numberOrChar
+
+  chinese,
+
+  strongPassword
 }
 
 export default is

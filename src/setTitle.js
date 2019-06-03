@@ -8,7 +8,8 @@ function setTitle (title) {
   }
 
   const iframe = window.document.createElement('iframe')
-  iframe.src = '//js.guanmai.cn/static_storage/json/common/logo/default/favicon.ico'
+  // 小程序原因，不用其他域名，否则小程序需要配置额外的业务域名，没有意义
+  iframe.src = '/favicon.ico'
 
   const listener = () => {
     setTimeout(() => {

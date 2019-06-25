@@ -89,8 +89,8 @@ const android = () => {
 
 const is = {
   // 废弃
-  isChinese: chinese, mobile,
-
+  isChinese: chinese,
+  mobile,
   weixin,
   mac,
   phone,

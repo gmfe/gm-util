@@ -1,9 +1,9 @@
+import { getLocale } from '../locales'
 import param from './param.js'
 import format from './format.js'
 import _ from 'lodash'
 import RequestInterceptor from './RequestInterceptor'
 import is from './is'
-import {getLocale} from './locale'
 
 var setPromiseTimeout = function (promise, ms) {
   if (ms === false) {

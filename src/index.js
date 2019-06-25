@@ -34,7 +34,7 @@ import loadScript from './loadScript'
 import importComponent from './importComponent'
 import to from './to'
 import formatNumber from './formatNumber'
-import { getLocale, setLocale } from './locale'
+import { getLocale, setLocale } from '../locales'
 
 export {
   /* will deprecated */

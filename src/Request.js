@@ -153,7 +153,7 @@ Request.prototype = {
       // 兼容传[json string] [formData] 的情况,暂时这两种. 其他的看情况
       if (toString.call(data) === '[object Object]') {
         // 如果存在File，就用表单上传
-        if (_.find(data, v => toString.call(v) === '[object File]')) {
+        if (_.find(data, v => /\[object File\]|\[object Blob\]/.test(toString.call(v)))) {
           body = new window.FormData()
           for (var e in data) {
             body.append(e, data[e])

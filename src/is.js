@@ -2,6 +2,8 @@ import _ from 'lodash'
 
 const weixin = () => /MicroMessenger/i.test(navigator.userAgent)
 
+const alipay = () => /Alipay/i.test(navigator.userAgent)
+
 const mac = () => window.navigator.userAgent.includes('Mac')
 
 const promise = (arg) => window.toString.call(arg) === '[object Promise]'
@@ -92,6 +94,7 @@ const is = {
   isChinese: chinese,
   mobile,
   weixin,
+  alipay,
   mac,
   phone,
   weixinMP,

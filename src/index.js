@@ -35,6 +35,7 @@ import importComponent from './importComponent'
 import to from './to'
 import formatNumber from './formatNumber'
 import { getLocale, setLocale } from '../locales'
+import isZoom from './isZoom'
 
 export {
   /* will deprecated */
@@ -57,6 +58,7 @@ export {
   isElementInViewport,
   isElementOverViewport,
   getElementPosition,
+  isZoom,
 
   isPathMatch,
   setTitle, setIco,

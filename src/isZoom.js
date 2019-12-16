@@ -7,11 +7,11 @@ export default function isZoom () {
   div.innerText = 'test'
 
   document.body.appendChild(div)
-  const h = div.offsetHeight
+  const h = window.getComputedStyle(div).fontSize
 
   // 检测结束,删除节点
   document.body.removeChild(div)
 
   // 不等于12,说明浏览器使用了缩放
-  return h !== 12
+  return h !== '12px'
 }

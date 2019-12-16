@@ -4,8 +4,6 @@
 export default function isZoom () {
   const div = document.createElement('div')
   div.style.fontSize = '1px'
-  div.style.height = '1em'
-  div.style.width = '100px'
   div.innerText = 'test'
 
   document.body.appendChild(div)

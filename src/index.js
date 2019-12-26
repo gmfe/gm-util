@@ -36,6 +36,7 @@ import to from './to'
 import formatNumber from './formatNumber'
 import { getLocale, setLocale } from '../locales'
 import isZoom from './isZoom'
+import { devWarnForHook, devWarn, warn } from './warn'
 
 export {
   /* will deprecated */
@@ -81,5 +82,7 @@ export {
   to,
   formatNumber,
   getLocale,
-  setLocale
+  setLocale,
+
+  devWarn, devWarnForHook, warn
 }

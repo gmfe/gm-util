@@ -35,12 +35,12 @@
     "husky": "^0.14.3",
     "lodash": "^4.17.10",
     "query-string": "^6.1.0",
-    "react": "^16.5.0"
+    "react": "^16.12.0"
   },
   "peerDependencies": {
     "big.js": "^5.1.2",
     "lodash": "^4.17.10",
     "query-string": "^6.1.0",
-    "react": "^16.4.2"
+    "react": "^16.12.0"
   }
 }

@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "precommit": "eslint ./src/",
+    "precommit": "eslint --fix ./src/",
     "publishpatch": "git add --all; git commit -m 'c'; npm version patch; git push origin HEAD:master; npm publish --registry='https://registry.npmjs.org'; cnpm sync gm-util; npm version;"
   },
   "repository": {

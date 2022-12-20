@@ -1,5 +1,6 @@
 /**
  * 检测浏览器缩放. 文章: https://www.yuque.com/iyum9i/uur0qi/cup15r
+ * @deprecated 现在不起作用了
  */
 export default function isZoom () {
   const div = document.createElement('div')

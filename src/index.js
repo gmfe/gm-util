@@ -36,6 +36,7 @@ import to from './to'
 import formatNumber from './formatNumber'
 import { getLocale, setLocale } from '../locales'
 import isZoom from './isZoom'
+import isZoom2 from './isZoom2'
 import { devWarnForHook, devWarn, warn } from './warn'
 
 export {
@@ -60,7 +61,7 @@ export {
   isElementOverViewport,
   getElementPosition,
   isZoom,
-
+  isZoom2,
   isPathMatch,
   setTitle, setIco,
   getScrollTop,

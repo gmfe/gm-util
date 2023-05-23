@@ -19,7 +19,7 @@ const pinYinFilter = (list, filterText, what) => {
       if (!_.isString(w)) {
         w = ''
       }
-      return w.indexOf(filterText) > -1
+      return w.toLowerCase().indexOf(filterText) > -1
     })
   }
 

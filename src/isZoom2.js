@@ -110,7 +110,8 @@ export default function isZoom2() {
   }
 
   function detectZoom() {
-    return detectZoomFunc[getBrowser() || "chrome"]();
+    if (!getBrowser()) return false;
+    return detectZoomFunc[getBrowser()]();
   }
 
   function iszoom(e) {

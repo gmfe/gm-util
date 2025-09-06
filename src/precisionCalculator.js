@@ -23,7 +23,7 @@ const ROUNDING_MODES = {
    */
   ROUND_HALF_UP: 2, // 四舍五入
   /**
-   * 五舍六入 (Banker's Rounding)
+   * 四舍六入五成双 (Banker's Rounding)
    */
   ROUND_HALF_EVEN: 3, // 四舍六入五成双 (Banker's Rounding)
 };
@@ -51,6 +51,7 @@ const DEFAULT_CONFIG = {
   precision: 2, // 默认小数位数
   roundingMode: ROUNDING_MODES.ROUND_HALF_UP, // 默认舍入规则
   calculationMode: CALCULATION_MODES.CALC_THEN_ROUND, // 默认计算模式
+  hideIntegerDecimal: false,
 };
 
 /**
@@ -269,23 +270,55 @@ class ProjectDataCalculator {
    * @returns {string} 舍入后的值的字符串表示
    */
   toString() {
-    return this.getRoundedValue().toString();
+    let str = this.getRoundedValue().toFixed(this.config.precision).toString();
+    // 如果配置了隐藏整数小数位
+    if (this.config.hideIntegerDecimal) {
+      // 检查字符串是否包含小数点
+      const decimalIndex = str.indexOf(".");
+      if (decimalIndex !== -1) {
+        // 检查小数点后是否全为0
+        const decimalPart = str.substring(decimalIndex + 1);
+        if (decimalPart && /^0+$/.test(decimalPart)) {
+          // 如果是，则只返回整数部分
+          str = str.substring(0, decimalIndex);
+        }
+      }
+    }
+    return str;
   }
 
   /**
    * 将舍入后的值转换为数字
    * @returns {number} 舍入后的值的数字表示
    */
-  toNumber() {
-    return this.getRoundedValue().toNumber();
-  }
+  // toNumber() {
+  //   return this.getRoundedValue()
+  // }
 
   /**
    * 用于 JSON 序列化，返回舍入后的值的字符串表示
    * @returns {string} 舍入后的值的字符串表示
    */
   toJSON() {
-    return this.toString();
+    return this.toFixed(this.config.precision).toString();
+  }
+
+  toFixed() {
+    let str = this.getRoundedValue().toFixed(this.config.precision).toString();
+    // 如果配置了隐藏整数小数位
+    if (this.config.hideIntegerDecimal) {
+      // 检查字符串是否包含小数点
+      const decimalIndex = str.indexOf(".");
+      if (decimalIndex !== -1) {
+        // 检查小数点后是否全为0
+        const decimalPart = str.substring(decimalIndex + 1);
+        if (decimalPart && /^0+$/.test(decimalPart)) {
+          // 如果是，则只返回整数部分
+          str = str.substring(0, decimalIndex);
+        }
+      }
+    }
+    return str;
   }
 }
 

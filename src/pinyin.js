@@ -703,8 +703,9 @@ const pinyin = (source, style) => {
     if (compareResult < 0) {
       index--
     }
-    cache[target] = pinyins[index]
-    return (style === 'first_letter') ? pinyins[index].charAt(0) : pinyins[index]
+    const targetPinyin = pinyins[index] || ''
+    cache[target] = targetPinyin
+    return (style === 'first_letter') ? targetPinyin.charAt(0) : targetPinyin
   }
 
   const _pinyin = (source, style) => {
